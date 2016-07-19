@@ -6,6 +6,7 @@ from flask import request
 from handler import DBMaster
 from flask import current_app as app
 from flask import jsonify
+import logging
 
 app=Flask(__name__)
 
@@ -73,8 +74,12 @@ def searchUser():
     result=g.dbHandler.searchUser(req_json)
     return jsonify({"user":result})
 
-
+handler = logging.FileHandler('bh-api.log')
+handler.setLevel(logging.WARNING)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+app.logger.addHandler(handler)
 
 
 if __name__ == "__main__":
-    app.run(port=5000,debug=True)
+    app.run(host='0.0.0.0',port=5000,debug=True)
