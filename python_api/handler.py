@@ -44,7 +44,7 @@ class DBMaster:
         if (not search):
             return "Empty"
         query = """
-            select bpm.name,bpm.type,CONCAT('http://res.cloudinary.com/varunchauhan49/image/upload/v1467630383/',REPLACE(bpm.featured_image, ' ', ''))
+            select bpm.post_id,bpm.name,bpm.type,CONCAT('http://res.cloudinary.com/varunchauhan49/image/upload/v1467630383/',REPLACE(bpm.featured_image, ' ', ''))
             as featured_image,bpm.bhooka_recomends,bpm.parking,bpm.phone,bpm.address,bpm.lat,bpm.long from bhooka_master.bh_post_master
             as bpm where bpm.city_id IN (%s) and bpm.post_id IN  (select distinct(post_id)
             from (SELECT post_id FROM bhooka_master.bh_post_master
