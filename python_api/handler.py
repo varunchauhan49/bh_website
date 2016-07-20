@@ -91,7 +91,7 @@ class DBMaster:
         outputDict['basic'] = result
 
         query = """
-                SELECT (CONCAT('http://res.cloudinary.com/varunchauhan49/image/upload/v1467630383/',
+                SELECT CONCAT('http://res.cloudinary.com/varunchauhan49/image/upload/v1467630383/',
                 REPLACE(image_url, ' ', '')) as image FROM bhooka_master.bh_image_master where post_id=%s;
              """
         query = query % (id)
