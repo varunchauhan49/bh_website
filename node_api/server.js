@@ -1,4 +1,5 @@
 var express = require('express');
+var Promise = require('es6-promise').Promise;
 var app =express();
 var path = require('path');
 var webpack = require('webpack');
@@ -126,7 +127,7 @@ passport.deserializeUser(function(user, done) {
 
 
 app.use(require('webpack-dev-middleware')(compiler));
-app.use(require('webpack-hot-middleware')(compiler));
+//app.use(require('webpack-hot-middleware')(compiler));
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -189,6 +190,6 @@ app.get('/auth/logout', function (req, res) {
 });
 
 
-var server = app.listen('3349',function(){
+var server = app.listen('80',function(){
 	console.log('Server Running on port',server.address().port);
 });
